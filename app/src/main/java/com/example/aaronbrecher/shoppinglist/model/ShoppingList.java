@@ -18,19 +18,48 @@ import android.support.annotation.NonNull;
 public class ShoppingList {
 
     @PrimaryKey
-    @ColumnInfo
-    String name;
+    @NonNull
+    private String name;
 
     @ColumnInfo
-    String description;
+    private String description;
+
+    @ColumnInfo
+    private long date;
 
 
     // A constructer in case we want to use the list object out of room
-    public ShoppingList(String name, String description) {
+    public ShoppingList(String name, String description, long date) {
         this.name = name;
         this.description = description;
+        this.date = date;
     }
 
     public ShoppingList() {
+    }
+
+    @NonNull
+    public String getName() {
+        return name;
+    }
+
+    public void setName(@NonNull String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public long getDate() {
+        return date;
+    }
+
+    public void setDate(long date) {
+        this.date = date;
     }
 }

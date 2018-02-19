@@ -16,6 +16,7 @@ import android.support.annotation.NonNull;
  * itemName - the name of the ListItem
  * quantity - amount of the items needed
  * notes - any additional info about the item for ex. Brand etc. will be a simple string
+ * category - category for the item (will be used for sorting of the items)
  * listName - the link to the list the item belongs to will correspond to the name of the list
  */
 
@@ -26,19 +27,22 @@ public class ListItem {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
-    int id;
+    private int id;
 
     @ColumnInfo
-    String itemName;
+    private String itemName;
 
     @ColumnInfo
-    int quantity;
+    private int quantity;
 
     @ColumnInfo
-    String notes;
+    private String notes;
 
     @ColumnInfo(name = "list_name")
-    String listName;
+    private String listName;
+
+    @ColumnInfo
+    private String category;
 
     // A full constructer to use when creating the item - will not be used by Room
     @Ignore
@@ -94,5 +98,13 @@ public class ListItem {
 
     public void setListName(String listName) {
         this.listName = listName;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
