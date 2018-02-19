@@ -7,41 +7,30 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 /**
- * Created by aaronbrecher on 2/18/18.
+ * Model for a shoppingList object to be used to create a table in the Room database
+ * each Shopping list has 3 member variables :
+ * name - is the name of the Shopping list ex. Grocery this will also be the PrimaryKey and will not allow
+ * two lists with the same name
+ * description - a quick description of the list ex. Grocery list for shoprite...
  */
 
 @Entity
-public class ShoppingList{
+public class ShoppingList {
 
-    @PrimaryKey(autoGenerate = true)
-    @NonNull
-    int listId;
-
+    @PrimaryKey
     @ColumnInfo
     String name;
 
-    @Ignore
-    public ShoppingList(int id, String name){
-        listId = id;
+    @ColumnInfo
+    String description;
+
+
+    // A constructer in case we want to use the list object out of room
+    public ShoppingList(String name, String description) {
         this.name = name;
+        this.description = description;
     }
 
-    public ShoppingList(){}
-
-    @NonNull
-    public int getListId() {
-        return listId;
-    }
-
-    public void setListId(@NonNull int listId) {
-        this.listId = listId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public ShoppingList() {
     }
 }
