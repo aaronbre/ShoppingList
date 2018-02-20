@@ -1,6 +1,9 @@
 package com.example.aaronbrecher.shoppinglist.dependencyinjection;
 
 import android.app.Application;
+import android.content.Context;
+
+import com.example.aaronbrecher.shoppinglist.ShoppingListApplication;
 
 import javax.inject.Singleton;
 
@@ -14,15 +17,19 @@ import dagger.Provides;
 @Module
 public class AppModule {
 
-    Application mApplication;
+    private ShoppingListApplication application;
 
-    public AppModule(Application application) {
-        mApplication = application;
+    public AppModule(ShoppingListApplication application) {
+        this.application = application;
     }
 
     @Provides
     @Singleton
-    Application providesApplication(){
-        return mApplication;
+    ShoppingListApplication providesShoppingListApp(){
+        return application;
     }
+
+    @Provides
+    @Singleton
+    Application providesApp(){return application;}
 }

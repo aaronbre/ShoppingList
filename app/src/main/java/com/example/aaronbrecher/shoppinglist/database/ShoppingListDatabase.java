@@ -15,21 +15,21 @@ import com.example.aaronbrecher.shoppinglist.model.ShoppingList;
 @Database(entities = {ShoppingList.class, ListItem.class}, version = 1)
 public abstract class ShoppingListDatabase extends RoomDatabase {
 
-    private static ShoppingListDatabase instance;
+//    private static ShoppingListDatabase instance;
 
     public abstract ShoppingListDao shoppingListDao();
     public abstract ListItemDao listItemDao();
 
-    public static ShoppingListDatabase getInstance(Context context){
-        if (instance == null) {
-            instance = Room.databaseBuilder(context.getApplicationContext(),
-                    ShoppingListDatabase.class, "shopping-list-database")
-                    .build();
-        }
-        return instance;
-    }
-
-    public static void destroyInstance(){
-        instance = null;
-    }
+//    public static ShoppingListDatabase getInstance(Context context){
+//        if (instance == null) {
+//            instance = Room.databaseBuilder(context.getApplicationContext(),
+//                    ShoppingListDatabase.class, "shopping-list-database")
+//                    .build();
+//        }
+//        return instance;
+//    }
+//
+//    public static void destroyInstance(){
+//        instance = null;
+//    }
 }

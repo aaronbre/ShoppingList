@@ -1,5 +1,6 @@
 package com.example.aaronbrecher.shoppinglist.database;
 
+import android.arch.lifecycle.LiveData;
 import android.content.Context;
 
 import com.example.aaronbrecher.shoppinglist.model.ShoppingList;
@@ -35,7 +36,7 @@ public class ShoppingListRepository {
         shoppingListDao.insertAll(lists);
     }
 
-    public void getAllShoppingLists(){
-        shoppingListDao.getShoppingLists();
+    public LiveData<List<ShoppingList>> getAllShoppingLists(){
+        return shoppingListDao.getShoppingLists();
     }
 }

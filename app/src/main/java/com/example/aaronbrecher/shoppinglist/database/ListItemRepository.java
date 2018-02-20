@@ -8,6 +8,7 @@ import com.example.aaronbrecher.shoppinglist.model.ListItem;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
@@ -21,11 +22,11 @@ import javax.inject.Singleton;
 @Singleton
 public class ListItemRepository {
 
-    private Context context;
-    private ListItemDao listItemDao = ShoppingListDatabase.getInstance(context).listItemDao();
+    ListItemDao listItemDao;
 
-    public ListItemRepository(Context context) {
-        this.context = context;
+    @Inject
+    public ListItemRepository(ListItemDao listItemDao) {
+        this.listItemDao = listItemDao;
     }
 
     public LiveData<ListItem> getListItemForId(int id){
