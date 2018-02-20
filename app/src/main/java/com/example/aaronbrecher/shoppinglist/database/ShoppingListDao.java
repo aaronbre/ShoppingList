@@ -9,10 +9,11 @@ import com.example.aaronbrecher.shoppinglist.model.ShoppingList;
 
 import java.util.List;
 
+import javax.inject.Singleton;
+
 /**
  * Created by aaronbrecher on 2/18/18.
  */
-
 @Dao
 public interface ShoppingListDao {
 

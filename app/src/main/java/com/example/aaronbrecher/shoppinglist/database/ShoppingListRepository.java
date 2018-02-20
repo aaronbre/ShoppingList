@@ -6,6 +6,9 @@ import com.example.aaronbrecher.shoppinglist.model.ShoppingList;
 
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 /**
  * Created by aaronbrecher on 2/18/18.
  * An abstraction class over the DAO's to do the database queries. This will allow us to change the
@@ -14,13 +17,14 @@ import java.util.List;
  * we switch to Firebase...
  */
 
+@Singleton
 public class ShoppingListRepository {
 
-    private Context context;
-    private ShoppingListDao shoppingListDao = ShoppingListDatabase.getInstance(context).shoppingListDao();
+    private ShoppingListDao shoppingListDao;
 
-    public ShoppingListRepository(Context context) {
-        this.context = context;
+    @Inject
+    public ShoppingListRepository(ShoppingListDao shoppingListDao) {
+        this.shoppingListDao = shoppingListDao;
     }
 
     public void insertAllLists(List<ShoppingList> lists){

@@ -8,6 +8,8 @@ import com.example.aaronbrecher.shoppinglist.model.ListItem;
 
 import java.util.List;
 
+import javax.inject.Singleton;
+
 /**
  * Created by aaronbrecher on 2/18/18.
  * An abstraction class over the DAO's to do the database queries. This will allow us to change the
@@ -16,6 +18,7 @@ import java.util.List;
  * we switch to Firebase...
  */
 
+@Singleton
 public class ListItemRepository {
 
     private Context context;
