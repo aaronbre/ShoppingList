@@ -2,6 +2,7 @@ package com.example.aaronbrecher.shoppinglist.dependencyinjection;
 
 import com.example.aaronbrecher.shoppinglist.addList.NewListActivity;
 import com.example.aaronbrecher.shoppinglist.listactivity.ListActivity;
+import com.example.aaronbrecher.shoppinglist.listdetail.ListDetailActivity;
 
 import javax.inject.Singleton;
 
@@ -16,4 +17,5 @@ import dagger.Component;
 public interface AppComponent {
     void inject(ListActivity listActivity);
     void inject(NewListActivity newListActivity);
+    void inject(ListDetailActivity listDetailActivity);
 }

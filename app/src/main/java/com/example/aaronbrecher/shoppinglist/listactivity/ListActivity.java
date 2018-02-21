@@ -88,6 +88,8 @@ public class ListActivity extends AppCompatActivity implements ShoppingListAdapt
                         LinearLayoutManager.VERTICAL,
                         false));
 
+        //TODO need to add swipe functionality to delete a list
+
         //setup the fab button to add a new shopping list
         mAddNewList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +121,8 @@ public class ListActivity extends AppCompatActivity implements ShoppingListAdapt
         }
         return super.onOptionsItemSelected(item);
     }
+
+    //TODO need to write function to bring up dialog on delete to make sure you want to delete
 
     //function to react to a click on the recycler view haveing this here
     //allows us to start an intent without passing in the context to the adapter

@@ -65,7 +65,7 @@ public class NewListActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.new_list_action_save){
-            //TODO save the list to the Room database
+            //TODO check that the name is unique
             ShoppingList list = createListFromUserInput();
             long listId = mViewModel.saveListToRoom(list);
             if(listId == -1){
