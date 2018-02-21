@@ -1,6 +1,6 @@
 package com.example.aaronbrecher.shoppinglist.dependencyinjection;
 
-import com.example.aaronbrecher.shoppinglist.activities.ListActivity;
+import com.example.aaronbrecher.shoppinglist.listactivity.ListActivity;
 
 import javax.inject.Singleton;
 

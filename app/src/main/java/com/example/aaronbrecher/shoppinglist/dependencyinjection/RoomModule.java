@@ -10,6 +10,7 @@ import com.example.aaronbrecher.shoppinglist.database.ListItemRepository;
 import com.example.aaronbrecher.shoppinglist.database.ShoppingListDao;
 import com.example.aaronbrecher.shoppinglist.database.ShoppingListDatabase;
 import com.example.aaronbrecher.shoppinglist.database.ShoppingListRepository;
+import com.example.aaronbrecher.shoppinglist.viewmodel.CustomViewModelFactory;
 
 import javax.inject.Singleton;
 
@@ -64,9 +65,9 @@ public class RoomModule {
         return new ListItemRepository(listItemDao);
     }
 
-//    @Provides
-//    @Singleton
-//    ViewModelProvider.Factory provideViewModelFactory(ListItemRepository listItemRepository, ShoppingListRepository shoppingListRepository){
-//        return new CustomViewModelFactory(listItemRepository, shoppingListRepository);
-//    }
+    @Provides
+    @Singleton
+    ViewModelProvider.Factory provideViewModelFactory(ListItemRepository listItemRepository, ShoppingListRepository shoppingListRepository){
+        return new CustomViewModelFactory(listItemRepository, shoppingListRepository);
+    }
 }

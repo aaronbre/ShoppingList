@@ -19,7 +19,10 @@ public class ShoppingListApplication extends Application {
     public void onCreate() {
         super.onCreate();
         app = this;
-        appComponent = DaggerAppComponent.builder().roomModule(new RoomModule(this)).appModule(new AppModule(this)).build();
+        appComponent = DaggerAppComponent.builder()
+                .roomModule(new RoomModule(this))
+                .appModule(new AppModule(this))
+                .build();
     }
     public static ShoppingListApplication getApp(){return app;}
 
