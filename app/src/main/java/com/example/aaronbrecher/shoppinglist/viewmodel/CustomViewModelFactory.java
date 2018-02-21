@@ -8,11 +8,13 @@ import com.example.aaronbrecher.shoppinglist.database.ListItemRepository;
 import com.example.aaronbrecher.shoppinglist.database.ShoppingListRepository;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 /**
  * Created by aaronbrecher on 2/19/18.
  */
 
+@Singleton
 public class CustomViewModelFactory implements ViewModelProvider.Factory {
     private final ListItemRepository listItemRepository;
     private final ShoppingListRepository shoppingListRepository;

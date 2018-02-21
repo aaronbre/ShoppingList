@@ -38,6 +38,7 @@ public class RoomModule {
         return Room.databaseBuilder(application,
                 ShoppingListDatabase.class,
                 "shopping-list-database")
+                .allowMainThreadQueries()
                 .build();
     }
 

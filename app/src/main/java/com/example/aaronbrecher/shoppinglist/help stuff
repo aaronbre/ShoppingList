@@ -1,0 +1,65 @@
+
+<----------------------Example Code to use AsyncTask in Model to get data off main thread ------------------------------------>
+public class AddUserViewModel extends AndroidViewModel {
+     private UserDatabase userDatabase;
+
+     public AddUserViewModel(Application application) {
+      super(application);
+
+     userDatabase = UserDatabase.getDatabase(this.getApplication());
+     }
+
+     public void addUser(User user) {
+     new AddUserAsyncTask(userDatabase).execute(user);
+     }
+
+     private static class AddUserAsyncTask extends AsyncTask<User, Void,
+        Void> {
+
+        private UserDatabase db;
+
+        public AddUserAsyncTask(UserDatabase userDatabase) {
+             db = userDatabase;
+        }
+
+     @Override
+     protected Void doInBackground(User... params) {
+         db.userDao().insertUser(params);
+         return null;
+         }
+     }
+
+    public User getSpecificUserData(int userId) {
+        User user = null;
+        try {
+             user = new
+             getUserDataAsyncTask(userDatabase).execute(userId).get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+           }
+        return user;
+    }
+
+    private static class getUserDataAsyncTask extends AsyncTask<Integer,
+        Void, User> {
+
+        private UserDatabase db;
+
+        public getUserDataAsyncTask(UserDatabase userDatabase) {
+            db = userDatabase;
+        }
+
+        @Override
+        protected User doInBackground(Integer... userId) {
+            User user = db.userDao().getSpecifiedUser(userId);
+            return user;
+        }
+
+        @Override
+        protected void onPostExecute(User user) {
+            super.onPostExecute(user);
+        }
+      }
+  }
+
+  <----------------------End Code to use AsyncTask in Model to get data off main thread ------------------------------------>
