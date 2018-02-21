@@ -3,14 +3,18 @@ package com.example.aaronbrecher.shoppinglist.listactivity;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.example.aaronbrecher.shoppinglist.R;
 import com.example.aaronbrecher.shoppinglist.ShoppingListApplication;
+import com.example.aaronbrecher.shoppinglist.addList.NewListActivity;
 import com.example.aaronbrecher.shoppinglist.model.ShoppingList;
 import com.example.aaronbrecher.shoppinglist.viewmodel.ListViewModel;
 
@@ -30,8 +34,8 @@ public class ListActivity extends AppCompatActivity {
     ListViewModel mViewModel;
     List<ShoppingList> mShoppingLists;
     ShoppingListAdapter mAdapter;
-    @BindView(R.id.shopping_lists_recycler_view)
-    RecyclerView mRecyclerView;
+    @BindView(R.id.shopping_lists_recycler_view) RecyclerView mRecyclerView;
+    @BindView(R.id.add_new_shopping_list_fab) FloatingActionButton mAddNewList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,5 +77,13 @@ public class ListActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this,
                         LinearLayoutManager.VERTICAL,
                         false));
+
+        mAddNewList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListActivity.this, NewListActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

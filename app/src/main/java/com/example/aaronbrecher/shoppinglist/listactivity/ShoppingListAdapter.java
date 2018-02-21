@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.aaronbrecher.shoppinglist.R;
 import com.example.aaronbrecher.shoppinglist.model.ShoppingList;
 
+import java.text.DateFormat;
 import java.util.List;
 
 import butterknife.BindView;
@@ -51,6 +52,10 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
         if(list != null){
             holder.listName.setText(list.getName());
             holder.listDescription.setText(list.getDescription());
+            //Format the date and add the text to the view
+            String dateString = DateFormat.getDateInstance().format(list.getDate());
+            holder.listDate.setText(dateString);
+
         }
     }
 
@@ -78,6 +83,7 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
         //the variables
         @BindView(R.id.shopping_lists_text_main) TextView listName;
         @BindView(R.id.shopping_lists_text_secondary) TextView listDescription;
+        @BindView(R.id.shopping_lists_text_date) TextView listDate;
 
         public ShoppingListViewHolder(View itemView) {
             super(itemView);

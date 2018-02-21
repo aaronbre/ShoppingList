@@ -12,6 +12,9 @@ import javax.inject.Singleton;
 
 /**
  * Created by aaronbrecher on 2/19/18.
+ * This custom factory enables us to add the repository classes to the ViewModel
+ * it will be injected using dagger. Can add either the ShoppingListRepo or the
+ * listItemRepo or both
  */
 
 @Singleton
@@ -30,6 +33,8 @@ public class CustomViewModelFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         if(modelClass.isAssignableFrom(ListViewModel.class)){
             return (T) new ListViewModel(shoppingListRepository);
+        }else if(modelClass.isAssignableFrom(AddShoppingListViewModel.class)){
+            return (T) new AddShoppingListViewModel(shoppingListRepository);
         } else {
             throw new IllegalArgumentException("ViewModel not found");
         }
