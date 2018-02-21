@@ -6,6 +6,8 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import java.text.DateFormat;
+
 /**
  * Model for a shoppingList object to be used to create a table in the Room database
  * each Shopping list has 3 member variables :
@@ -57,6 +59,10 @@ public class ShoppingList {
 
     public long getDate() {
         return date;
+    }
+
+    public String getFormattedDate(){
+        return DateFormat.getDateInstance().format(date);
     }
 
     public void setDate(long date) {

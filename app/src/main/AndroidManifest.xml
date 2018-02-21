@@ -17,8 +17,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".addList.NewListActivity"
-            android:parentActivityName=".listactivity.ListActivity"></activity>
+        <activity
+            android:name=".addList.NewListActivity"
+            android:parentActivityName=".listactivity.ListActivity"
+            android:label="New Shopping List"/>
+        <activity android:name=".listdetail.ListDetailActivity"></activity>
     </application>
 
 </manifest>

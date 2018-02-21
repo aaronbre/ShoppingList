@@ -32,11 +32,19 @@ public class ShoppingListRepository {
         shoppingListDao.insertAll(lists);
     }
 
-    public void insertAllLists(ShoppingList... lists){
-        shoppingListDao.insertAll(lists);
+    public long insertList(ShoppingList list){
+       return shoppingListDao.insertList(list);
     }
 
     public LiveData<List<ShoppingList>> getAllShoppingLists(){
         return shoppingListDao.getShoppingLists();
+    }
+
+    public void deleteAll(){
+        shoppingListDao.deleteAll();
+    }
+
+    public void deleteList(ShoppingList list){
+        shoppingListDao.deleteList(list);
     }
 }

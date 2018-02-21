@@ -27,5 +27,13 @@ public class ListViewModel extends ViewModel {
     public LiveData<List<ShoppingList>> getShoppingLists(){
         return repository.getAllShoppingLists();
     }
+
+    public void deleteAllShoppingLists(){
+        repository.deleteAll();
+    }
+
+    public void deleteList(ShoppingList list){
+        repository.deleteList(list);
+    }
 }
 

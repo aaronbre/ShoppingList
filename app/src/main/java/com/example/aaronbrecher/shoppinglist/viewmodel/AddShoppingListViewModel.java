@@ -20,7 +20,7 @@ public class AddShoppingListViewModel extends ViewModel {
         this.repository = repository;
     }
 
-    public void saveListToRoom(ShoppingList list){
-        repository.insertAllLists(list);
+    public long saveListToRoom(ShoppingList list){
+        return repository.insertList(list);
     }
 }

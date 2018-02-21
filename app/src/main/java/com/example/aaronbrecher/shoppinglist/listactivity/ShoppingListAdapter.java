@@ -29,7 +29,7 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
      * The interface that receives onClick messages.
      */
     public interface ListItemClickListener {
-        void onListItemClick(int clickedItemIndex);
+        void onListItemClick(String name);
     }
 
     public ShoppingListAdapter(List<ShoppingList> shoppingLists) {
@@ -52,9 +52,7 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
         if(list != null){
             holder.listName.setText(list.getName());
             holder.listDescription.setText(list.getDescription());
-            //Format the date and add the text to the view
-            String dateString = DateFormat.getDateInstance().format(list.getDate());
-            holder.listDate.setText(dateString);
+            holder.listDate.setText(list.getFormattedDate());
 
         }
     }
@@ -78,7 +76,7 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
         notifyDataSetChanged();
     }
 
-    public class ShoppingListViewHolder extends RecyclerView.ViewHolder {
+    public class ShoppingListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         //use butterknife to bind the views of the layout and keep a cache in
         //the variables
         @BindView(R.id.shopping_lists_text_main) TextView listName;
@@ -88,6 +86,13 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
         public ShoppingListViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int adapterPosition = getAdapterPosition();
+            String listName = mShoppingLists.get(adapterPosition).getName();
+            mListItemClickListener.onListItemClick(listName);
         }
     }
 }

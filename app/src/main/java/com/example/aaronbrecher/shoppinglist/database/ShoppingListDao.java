@@ -2,6 +2,7 @@ package com.example.aaronbrecher.shoppinglist.database;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
@@ -21,8 +22,14 @@ public interface ShoppingListDao {
     void insertAll(List<ShoppingList> lists);
 
     @Insert
-    void insertAll(ShoppingList... lists);
+    long insertList(ShoppingList list);
 
     @Query("SELECT * FROM shoppinglist ORDER BY date")
     LiveData<List<ShoppingList>> getShoppingLists();
+
+    @Query("DELETE FROM shoppinglist")
+    void deleteAll();
+
+    @Delete
+    void deleteList(ShoppingList list);
 }

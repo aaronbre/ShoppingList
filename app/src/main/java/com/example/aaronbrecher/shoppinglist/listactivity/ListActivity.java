@@ -10,11 +10,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.aaronbrecher.shoppinglist.R;
 import com.example.aaronbrecher.shoppinglist.ShoppingListApplication;
 import com.example.aaronbrecher.shoppinglist.addList.NewListActivity;
+import com.example.aaronbrecher.shoppinglist.listdetail.ListDetailActivity;
 import com.example.aaronbrecher.shoppinglist.model.ShoppingList;
 import com.example.aaronbrecher.shoppinglist.viewmodel.ListViewModel;
 
@@ -25,7 +29,13 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ListActivity extends AppCompatActivity {
+/**
+ * This Activity controls the list of all Shopping Lists. From here the user can delete a list (or all lists)
+ * and tap on a list to view all the items in that list. To implement the tap the class implements the ListItemClickListener
+ * Interface supplied by the recyclerView adapter. This allows the adapter to call the onListItemClicked function to
+ * start a new intent
+ */
+public class ListActivity extends AppCompatActivity implements ShoppingListAdapter.ListItemClickListener{
 
     //use dagger to get the ViewModelFactory will setup automatically
     @Inject
@@ -78,6 +88,7 @@ public class ListActivity extends AppCompatActivity {
                         LinearLayoutManager.VERTICAL,
                         false));
 
+        //setup the fab button to add a new shopping list
         mAddNewList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,5 +96,36 @@ public class ListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    /**
+     * Set up the options menu will have one action that deletes all the lists
+     * currently in the database (doing so will also delete all the items by cascading
+     * see the listItem Entity(model)
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.shopping_lists_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if(itemId == R.id.lists_activity_action_delete_all){
+            mViewModel.deleteAllShoppingLists();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    //function to react to a click on the recycler view haveing this here
+    //allows us to start an intent without passing in the context to the adapter
+    @Override
+    public void onListItemClick(String name) {
+        Intent intent = new Intent(this, ListDetailActivity.class);
+        intent.putExtra("listName", name);
+        startActivity(intent);
     }
 }

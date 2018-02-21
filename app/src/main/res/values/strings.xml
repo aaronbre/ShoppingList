@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">ShoppingList</string>
 
+    <string name="lists_activity_delete_all_action">Delete All</string>
+
     <string name="new_list_action_save">Save</string>
     <string name="new_list_name_label">List Name</string>
     <string name="new_list_name_placeholder">Ex. Grocery list</string>
     <string name="new_list_description_label">List Description</string>
     <string name="new_list_description_placeholder">Write a description of the list here</string>
+    <string name="no_list_name_error_toast">The shopping list must have a Name</string>
+    <string name="insert_list_success_toast">Succesfully added the list to Database</string>
+    <string name="insert_list_failed_toast">Failed to enter the list to Database</string>
 </resources>

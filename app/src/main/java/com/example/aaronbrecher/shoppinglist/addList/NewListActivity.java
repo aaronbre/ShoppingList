@@ -4,11 +4,13 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.aaronbrecher.shoppinglist.R;
 import com.example.aaronbrecher.shoppinglist.ShoppingListApplication;
@@ -65,14 +67,39 @@ public class NewListActivity extends AppCompatActivity {
         if(id == R.id.new_list_action_save){
             //TODO save the list to the Room database
             ShoppingList list = createListFromUserInput();
+            long listId = mViewModel.saveListToRoom(list);
+            if(listId == -1){
+                Toast.makeText(this, getString(R.string.insert_list_failed_toast), Toast.LENGTH_SHORT).show();
+                finish();
+            }
+            else{
+                Toast.makeText(this, getString(R.string.insert_list_success_toast), Toast.LENGTH_SHORT).show();
+                finish();
+            }
         }
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Function to create a new shoppingList to be used to enter into db. Uses the user's
+     * input to create the list and adds the date at time of creation
+     * @return returns a new ShoppingList Object. If the List can't be created(i.e. no name) returns null
+     */
     private ShoppingList createListFromUserInput(){
         ShoppingList list = new ShoppingList();
-        list.setDate(System.currentTimeMillis()/1000);
+        String name = mNameInput.getText().toString().trim();
+        String description = mDescriptionInput.getText().toString().trim();
+        //if the name is empty it is invalid list so make toast and return null
+        if(TextUtils.isEmpty(name)){
+            Toast.makeText(this, getString(R.string.no_list_name_error_toast), Toast.LENGTH_SHORT).show();
+            return null;
+        }
+        // if there is no description entered create a default description by prepending "A" to the name
+        if (TextUtils.isEmpty(description)) description = "A " + name;
 
+        list.setDate(System.currentTimeMillis());
+        list.setName(name);
+        list.setDescription(description);
         return list;
     }
 
