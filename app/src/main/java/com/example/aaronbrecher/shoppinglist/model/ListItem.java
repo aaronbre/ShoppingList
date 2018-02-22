@@ -6,6 +6,8 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.RoomDatabase;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
@@ -27,7 +29,7 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
         parentColumns = "name",
         childColumns = "list_name",
         onDelete = CASCADE))
-public class ListItem {
+public class ListItem implements Parcelable {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
@@ -111,4 +113,40 @@ public class ListItem {
     public void setCategory(String category) {
         this.category = category;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
+        dest.writeString(this.itemName);
+        dest.writeInt(this.quantity);
+        dest.writeString(this.notes);
+        dest.writeString(this.listName);
+        dest.writeString(this.category);
+    }
+
+    protected ListItem(Parcel in) {
+        this.id = in.readInt();
+        this.itemName = in.readString();
+        this.quantity = in.readInt();
+        this.notes = in.readString();
+        this.listName = in.readString();
+        this.category = in.readString();
+    }
+
+    public static final Parcelable.Creator<ListItem> CREATOR = new Parcelable.Creator<ListItem>() {
+        @Override
+        public ListItem createFromParcel(Parcel source) {
+            return new ListItem(source);
+        }
+
+        @Override
+        public ListItem[] newArray(int size) {
+            return new ListItem[size];
+        }
+    };
 }

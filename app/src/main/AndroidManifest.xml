@@ -19,9 +19,10 @@
         </activity>
         <activity
             android:name=".addList.NewListActivity"
-            android:parentActivityName=".listactivity.ListActivity"
-            android:label="New Shopping List"/>
-        <activity android:name=".listdetail.ListDetailActivity"></activity>
+            android:label="New Shopping List"
+            android:parentActivityName=".listactivity.ListActivity" />
+        <activity android:name=".listdetail.ListDetailActivity" />
+        <activity android:name=".itemdetail.ItemDetailActivity"></activity>
     </application>
 
 </manifest>
