@@ -1,4 +1,4 @@
-package com.example.aaronbrecher.shoppinglist.listactivity;
+package com.example.aaronbrecher.shoppinglist.activityshoppinglists;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
@@ -17,8 +17,8 @@ import android.view.View;
 
 import com.example.aaronbrecher.shoppinglist.R;
 import com.example.aaronbrecher.shoppinglist.ShoppingListApplication;
-import com.example.aaronbrecher.shoppinglist.addList.NewListActivity;
-import com.example.aaronbrecher.shoppinglist.listdetail.ListDetailActivity;
+import com.example.aaronbrecher.shoppinglist.activityaddlist.NewListActivity;
+import com.example.aaronbrecher.shoppinglist.activitylistdetail.ListDetailActivity;
 import com.example.aaronbrecher.shoppinglist.model.ShoppingList;
 import com.example.aaronbrecher.shoppinglist.viewmodel.ListViewModel;
 

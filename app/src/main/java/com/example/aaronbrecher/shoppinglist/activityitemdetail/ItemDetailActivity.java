@@ -1,4 +1,4 @@
-package com.example.aaronbrecher.shoppinglist.itemdetail;
+package com.example.aaronbrecher.shoppinglist.activityitemdetail;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

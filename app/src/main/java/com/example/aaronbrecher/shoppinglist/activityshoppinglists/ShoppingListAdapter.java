@@ -1,6 +1,5 @@
-package com.example.aaronbrecher.shoppinglist.listactivity;
+package com.example.aaronbrecher.shoppinglist.activityshoppinglists;
 
-import android.arch.lifecycle.LiveData;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 import com.example.aaronbrecher.shoppinglist.R;
 import com.example.aaronbrecher.shoppinglist.model.ShoppingList;
 
-import java.text.DateFormat;
 import java.util.List;
 
 import butterknife.BindView;

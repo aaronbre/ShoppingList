@@ -1,4 +1,4 @@
-package com.example.aaronbrecher.shoppinglist.listdetail;
+package com.example.aaronbrecher.shoppinglist.activitylistdetail;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.aaronbrecher.shoppinglist.R;
-import com.example.aaronbrecher.shoppinglist.itemdetail.ItemDetailActivity;
+import com.example.aaronbrecher.shoppinglist.activityitemdetail.ItemDetailActivity;
 import com.example.aaronbrecher.shoppinglist.model.ListItem;
 
 import java.util.List;
@@ -84,5 +84,8 @@ public class ListDetailAdapter extends RecyclerView.Adapter <ListDetailAdapter.L
             intent.putExtra("item", item);
             mContext.startActivity(intent);
         }
+    }
+    public void swapList(List<ListItem> newList){
+        mListItems = newList;
     }
 }

@@ -1,8 +1,8 @@
 package com.example.aaronbrecher.shoppinglist.dependencyinjection;
 
-import com.example.aaronbrecher.shoppinglist.addList.NewListActivity;
-import com.example.aaronbrecher.shoppinglist.listactivity.ListActivity;
-import com.example.aaronbrecher.shoppinglist.listdetail.ListDetailActivity;
+import com.example.aaronbrecher.shoppinglist.activityaddlist.NewListActivity;
+import com.example.aaronbrecher.shoppinglist.activityshoppinglists.ListActivity;
+import com.example.aaronbrecher.shoppinglist.activitylistdetail.ListDetailActivity;
 
 import javax.inject.Singleton;
 
