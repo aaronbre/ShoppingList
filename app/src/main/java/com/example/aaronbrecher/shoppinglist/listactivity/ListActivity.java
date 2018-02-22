@@ -73,7 +73,7 @@ public class ListActivity extends AppCompatActivity implements ShoppingListAdapt
             public void onChanged(@Nullable List<ShoppingList> lists) {
                 if(mShoppingLists == null){
                     mShoppingLists = lists;
-                    mAdapter = new ShoppingListAdapter(lists);
+                    mAdapter = new ShoppingListAdapter(lists, ListActivity.this);
                     mRecyclerView.setAdapter(mAdapter);
                 }else {
                     mAdapter.swapLists(lists);

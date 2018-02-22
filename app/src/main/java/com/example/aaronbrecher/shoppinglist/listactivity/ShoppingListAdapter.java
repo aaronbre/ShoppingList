@@ -3,6 +3,7 @@ package com.example.aaronbrecher.shoppinglist.listactivity;
 import android.arch.lifecycle.LiveData;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by aaronbrecher on 2/20/18.
@@ -32,8 +35,8 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
         void onListItemClick(String name);
     }
 
-    public ShoppingListAdapter(List<ShoppingList> shoppingLists) {
-        //mListItemClickListener = clickListener;
+    public ShoppingListAdapter(List<ShoppingList> shoppingLists, ListItemClickListener clickListener) {
+        mListItemClickListener = clickListener;
         mShoppingLists = shoppingLists;
     }
 
@@ -86,6 +89,7 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
         public ShoppingListViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
         }
 
         @Override
@@ -93,6 +97,7 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
             int adapterPosition = getAdapterPosition();
             String listName = mShoppingLists.get(adapterPosition).getName();
             mListItemClickListener.onListItemClick(listName);
+            Log.d(TAG, "onClick: clicked " + listName);
         }
     }
 }

@@ -6,4 +6,20 @@
     android:layout_height="match_parent"
     tools:context="com.example.aaronbrecher.shoppinglist.listdetail.ListDetailActivity">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list_detail_item_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/list_detail_new_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/standard_padding"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/ic_add_white_24dp"/>
+
 </android.support.constraint.ConstraintLayout>
