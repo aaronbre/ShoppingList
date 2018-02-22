@@ -3,6 +3,8 @@
 
     <string name="lists_activity_delete_all_action">Delete All</string>
 
+    <string name="list_details_delete_list">Delete List</string>
+
     <string name="new_list_action_save">Save</string>
     <string name="new_list_name_label">List Name</string>
     <string name="new_list_name_placeholder">Ex. Grocery list</string>

@@ -1,4 +1,4 @@
-package com.example.aaronbrecher.shoppinglist.activitylistdetail;
+package com.example.aaronbrecher.shoppinglist.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.aaronbrecher.shoppinglist.R;
-import com.example.aaronbrecher.shoppinglist.activityitemdetail.ItemDetailActivity;
+import com.example.aaronbrecher.shoppinglist.activities.EditListItemActivity;
 import com.example.aaronbrecher.shoppinglist.model.ListItem;
 
 import java.util.List;
@@ -80,7 +80,7 @@ public class ListDetailAdapter extends RecyclerView.Adapter <ListDetailAdapter.L
         public void onClick(View view) {
             int adapterPostition = getAdapterPosition();
             ListItem item = mListItems.get(adapterPostition);
-            Intent intent = new Intent(mContext, ItemDetailActivity.class);
+            Intent intent = new Intent(mContext, EditListItemActivity.class);
             intent.putExtra("item", item);
             mContext.startActivity(intent);
         }

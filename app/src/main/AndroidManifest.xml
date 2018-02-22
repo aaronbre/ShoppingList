@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activityshoppinglists.ListActivity">
+        <activity android:name=".activities.ListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,11 +18,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activityaddlist.NewListActivity"
+            android:name=".activities.NewListActivity"
             android:label="New Shopping List"
-            android:parentActivityName=".activityshoppinglists.ListActivity" />
-        <activity android:name=".activitylistdetail.ListDetailActivity" />
-        <activity android:name=".activityitemdetail.ItemDetailActivity"></activity>
+            android:parentActivityName=".activities.ListActivity" />
+        <activity android:name=".activities.ListDetailActivity" />
+        <activity android:name=".activityitemdetail.ItemDetailActivity" />
+        <activity android:name=".activities.EditListItemActivity"></activity>
     </application>
 
 </manifest>

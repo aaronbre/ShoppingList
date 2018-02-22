@@ -40,6 +40,10 @@ public class ShoppingListRepository {
         return shoppingListDao.getShoppingLists();
     }
 
+    public ShoppingList getShoppingList(String listName){
+        return shoppingListDao.getShoppingList(listName);
+    }
+
     public void deleteAll(){
         shoppingListDao.deleteAll();
     }

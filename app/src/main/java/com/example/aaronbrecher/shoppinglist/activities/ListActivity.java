@@ -1,4 +1,4 @@
-package com.example.aaronbrecher.shoppinglist.activityshoppinglists;
+package com.example.aaronbrecher.shoppinglist.activities;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
@@ -17,8 +17,7 @@ import android.view.View;
 
 import com.example.aaronbrecher.shoppinglist.R;
 import com.example.aaronbrecher.shoppinglist.ShoppingListApplication;
-import com.example.aaronbrecher.shoppinglist.activityaddlist.NewListActivity;
-import com.example.aaronbrecher.shoppinglist.activitylistdetail.ListDetailActivity;
+import com.example.aaronbrecher.shoppinglist.adapters.ShoppingListAdapter;
 import com.example.aaronbrecher.shoppinglist.model.ShoppingList;
 import com.example.aaronbrecher.shoppinglist.viewmodel.ListViewModel;
 
@@ -35,7 +34,7 @@ import butterknife.ButterKnife;
  * Interface supplied by the recyclerView adapter. This allows the adapter to call the onListItemClicked function to
  * start a new intent
  */
-public class ListActivity extends AppCompatActivity implements ShoppingListAdapter.ListItemClickListener{
+public class ListActivity extends AppCompatActivity implements ShoppingListAdapter.ListItemClickListener {
 
     //use dagger to get the ViewModelFactory will setup automatically
     @Inject

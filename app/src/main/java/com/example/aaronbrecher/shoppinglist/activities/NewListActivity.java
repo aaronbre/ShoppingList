@@ -1,4 +1,4 @@
-package com.example.aaronbrecher.shoppinglist.activityaddlist;
+package com.example.aaronbrecher.shoppinglist.activities;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;

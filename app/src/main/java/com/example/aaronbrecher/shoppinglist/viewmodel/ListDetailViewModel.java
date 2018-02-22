@@ -19,6 +19,7 @@ public class ListDetailViewModel extends ViewModel {
 
     ShoppingListRepository mListsRepository;
     ListItemRepository mItemRepository;
+    private String mListName;
 
     @Inject
     public ListDetailViewModel(ShoppingListRepository shoppingListRepository, ListItemRepository listItemRepository){
@@ -26,7 +27,19 @@ public class ListDetailViewModel extends ViewModel {
         mItemRepository = listItemRepository;
     }
 
-    public LiveData<List<ListItem>> getAllItemsForList(String listName){
-        return mItemRepository.getListItemForShoppingList(listName);
+    public LiveData<List<ListItem>> getAllItemsForCurrentList(){
+        return mItemRepository.getListItemForShoppingList(mListName);
+    }
+
+    public void deleteList(){
+        mListsRepository.deleteList(mListsRepository.getShoppingList(mListName));
+    }
+
+    public String getListName() {
+        return mListName;
+    }
+
+    public void setListName(String listName) {
+        mListName = listName;
     }
 }

@@ -1,8 +1,9 @@
 package com.example.aaronbrecher.shoppinglist.dependencyinjection;
 
-import com.example.aaronbrecher.shoppinglist.activityaddlist.NewListActivity;
-import com.example.aaronbrecher.shoppinglist.activityshoppinglists.ListActivity;
-import com.example.aaronbrecher.shoppinglist.activitylistdetail.ListDetailActivity;
+import com.example.aaronbrecher.shoppinglist.activities.EditListItemActivity;
+import com.example.aaronbrecher.shoppinglist.activities.NewListActivity;
+import com.example.aaronbrecher.shoppinglist.activities.ListActivity;
+import com.example.aaronbrecher.shoppinglist.activities.ListDetailActivity;
 
 import javax.inject.Singleton;
 
@@ -18,4 +19,5 @@ public interface AppComponent {
     void inject(ListActivity listActivity);
     void inject(NewListActivity newListActivity);
     void inject(ListDetailActivity listDetailActivity);
+    void inject(EditListItemActivity editListItemActivity);
 }

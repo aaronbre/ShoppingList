@@ -1,4 +1,4 @@
-package com.example.aaronbrecher.shoppinglist.activityshoppinglists;
+package com.example.aaronbrecher.shoppinglist.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
