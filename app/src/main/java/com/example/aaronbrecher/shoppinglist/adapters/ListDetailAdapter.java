@@ -47,7 +47,7 @@ public class ListDetailAdapter extends RecyclerView.Adapter <ListDetailAdapter.L
             holder.itemName.setText(item.getItemName());
             holder.itemCategory.setText(item.getCategory());
             holder.itemNotes.setText(item.getNotes());
-            holder.itemQuantity.setText(item.getQuantity());
+            holder.itemQuantity.setText(String.valueOf(item.getQuantity()));
         }
     }
 
@@ -72,7 +72,7 @@ public class ListDetailAdapter extends RecyclerView.Adapter <ListDetailAdapter.L
 
         public ListDetailViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(itemView);
+            ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);
         }
 
@@ -81,7 +81,7 @@ public class ListDetailAdapter extends RecyclerView.Adapter <ListDetailAdapter.L
             int adapterPostition = getAdapterPosition();
             ListItem item = mListItems.get(adapterPostition);
             Intent intent = new Intent(mContext, EditListItemActivity.class);
-            intent.putExtra("item", item);
+            intent.putExtra(mContext.getString(R.string.edit_list_item_list_item_key), item);
             mContext.startActivity(intent);
         }
     }

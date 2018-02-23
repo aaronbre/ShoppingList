@@ -25,7 +25,7 @@ public interface ListItemDao {
 
     //Insert a few or single ListItem into the database
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertAll(ListItem... items);
+    long insertItem(ListItem item);
 
     //query function for retrieving a single List item
     @Query("SELECT * FROM ListItem WHERE id = :id ORDER BY itemName")

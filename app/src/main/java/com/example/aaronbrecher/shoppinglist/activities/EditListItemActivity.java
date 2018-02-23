@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.aaronbrecher.shoppinglist.R;
 import com.example.aaronbrecher.shoppinglist.ShoppingListApplication;
@@ -54,7 +55,7 @@ public class EditListItemActivity extends AppCompatActivity {
          * occupy the fields with the information from the list item.
          * if not then set the title to add new list item
          */
-        if (getIntent().hasExtra("item")) {
+        if (getIntent().hasExtra(getString(R.string.edit_list_item_list_item_key))) {
             //get the item from the intent
             ListItem item = getIntent().getParcelableExtra("item");
             mViewModel.setListName(item.getListName());
@@ -67,7 +68,7 @@ public class EditListItemActivity extends AppCompatActivity {
             mEditListItemNotes.setText(item.getNotes());
         } else {
             setTitle(R.string.new_list_item_title);
-            mViewModel.setListName(getIntent().getStringExtra("listName"));
+            mViewModel.setListName(getIntent().getStringExtra(getString(R.string.edit_list_item_list_name_key)));
         }
     }
 
@@ -83,6 +84,8 @@ public class EditListItemActivity extends AppCompatActivity {
         int itemId = item.getItemId();
         if(itemId == R.id.list_action_save){
             ListItem listItem = setupListItem();
+            long id = mViewModel.addNewListItem(listItem);
+            Toast.makeText(this, "the item was entered successfully id is " + id, Toast.LENGTH_LONG).show();
             finish();
             return true;
         }

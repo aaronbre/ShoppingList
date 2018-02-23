@@ -33,7 +33,7 @@ public class ListItemRepository {
         return listItemDao.findById(id);
     }
 
-    public LiveData<List<ListItem>> getListItemForShoppingList(String listName){
+    public LiveData<List<ListItem>> getListItemsForShoppingList(String listName){
         return listItemDao.findItemsForList(listName);
     }
 
@@ -41,7 +41,7 @@ public class ListItemRepository {
         listItemDao.insertAll(items);
     }
 
-    public void insertListItems(ListItem... items){
-        listItemDao.insertAll(items);
+    public long insertListItem(ListItem item){
+        return listItemDao.insertItem(item);
     }
 }

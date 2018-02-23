@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -30,6 +31,7 @@ import butterknife.ButterKnife;
 
 public class ListDetailActivity extends AppCompatActivity {
 
+    private static final String TAG = ListDetailActivity.class.getSimpleName() ;
     @Inject
     CustomViewModelFactory mCustomViewModelFactory;
 
@@ -77,6 +79,8 @@ public class ListDetailActivity extends AppCompatActivity {
             public void onChanged(@Nullable List<ListItem> items) {
                 if(mListItems == null){
                     mListItems = items;
+                    //TODO remove this
+                    for(ListItem item : mListItems) Log.i(TAG, "onChanged: Current listItem " + item.toString());
                     mAdapter = new ListDetailAdapter(items);
                     mListDetailItemList.setAdapter(mAdapter);
                 }else {
@@ -92,7 +96,7 @@ public class ListDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ListDetailActivity.this, EditListItemActivity.class);
-                intent.putExtra("ListName", mViewModel.getListName());
+                intent.putExtra(getString(R.string.edit_list_item_list_name_key), mViewModel.getListName());
                 startActivity(intent);
             }
         });

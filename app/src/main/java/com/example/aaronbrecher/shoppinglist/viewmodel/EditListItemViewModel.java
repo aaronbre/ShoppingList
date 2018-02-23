@@ -1,11 +1,14 @@
 package com.example.aaronbrecher.shoppinglist.viewmodel;
 
 import android.arch.lifecycle.ViewModel;
+import android.util.Log;
 
 import com.example.aaronbrecher.shoppinglist.database.ListItemRepository;
 import com.example.aaronbrecher.shoppinglist.model.ListItem;
 
 import javax.inject.Inject;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by aaronbrecher on 2/22/18.
@@ -22,10 +25,10 @@ public class EditListItemViewModel extends ViewModel {
         mListItemRepository = listItemRepository;
     }
 
-    public void addNewListItem(ListItem item){
+    public long addNewListItem(ListItem item){
         item.setListName(listName);
         if(itemId != -1) item.setId(itemId);
-        mListItemRepository.insertListItems(item);
+        return mListItemRepository.insertListItem(item);
     }
 
     public int getItemId() {

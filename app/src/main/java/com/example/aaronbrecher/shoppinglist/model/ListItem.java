@@ -150,4 +150,16 @@ public class ListItem implements Parcelable {
             return new ListItem[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "ListItem{" +
+                "id=" + id +
+                ", itemName='" + itemName + '\'' +
+                ", quantity=" + quantity +
+                ", notes='" + notes + '\'' +
+                ", listName='" + listName + '\'' +
+                ", category='" + category + '\'' +
+                '}';
+    }
 }

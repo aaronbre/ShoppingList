@@ -28,7 +28,7 @@ public class ListDetailViewModel extends ViewModel {
     }
 
     public LiveData<List<ListItem>> getAllItemsForCurrentList(){
-        return mItemRepository.getListItemForShoppingList(mListName);
+        return mItemRepository.getListItemsForShoppingList(mListName);
     }
 
     public void deleteList(){
