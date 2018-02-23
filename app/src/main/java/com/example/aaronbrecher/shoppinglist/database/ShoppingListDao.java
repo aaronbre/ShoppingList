@@ -27,7 +27,7 @@ public interface ShoppingListDao {
     @Query("SELECT * FROM shoppinglist ORDER BY date")
     LiveData<List<ShoppingList>> getShoppingLists();
 
-    @Query("SELECT * FROM shoppinglist WHERE list_name = :listName")
+    @Query("SELECT * FROM shoppinglist WHERE name = :listName")
     ShoppingList getShoppingList(String listName);
     @Query("DELETE FROM shoppinglist")
     void deleteAll();

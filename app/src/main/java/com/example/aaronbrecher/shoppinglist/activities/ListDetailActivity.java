@@ -92,6 +92,8 @@ public class ListDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ListDetailActivity.this, EditListItemActivity.class);
+                intent.putExtra("ListName", mViewModel.getListName());
+                startActivity(intent);
             }
         });
     }

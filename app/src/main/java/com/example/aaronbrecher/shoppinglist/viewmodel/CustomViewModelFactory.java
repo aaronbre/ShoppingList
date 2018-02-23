@@ -38,7 +38,7 @@ public class CustomViewModelFactory implements ViewModelProvider.Factory {
             return (T) new AddShoppingListViewModel(shoppingListRepository);
         } else if(modelClass.isAssignableFrom(ListDetailViewModel.class)){
             return (T) new ListDetailViewModel(shoppingListRepository, listItemRepository);
-        } else if (modelClass.isAssignableFrom(EditListItemActivity.class)){
+        } else if (modelClass.isAssignableFrom(EditListItemViewModel.class)){
             return (T) new EditListItemViewModel(listItemRepository);
         }
         else {

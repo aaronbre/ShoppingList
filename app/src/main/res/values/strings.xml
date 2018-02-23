@@ -4,6 +4,17 @@
     <string name="lists_activity_delete_all_action">Delete All</string>
 
     <string name="list_details_delete_list">Delete List</string>
+    <string name="edit_list_item_title">Edit list item</string>
+    <string name="new_list_item_title">New list item</string>
+
+    <string name="edit_list_item_name_hint">Item name</string>
+    <string name="edit_list_item_name_placeholder">Ex. Apples</string>
+    <string name="edit_list_item_quantity_hint">Quantity</string>
+    <string name="edit_list_item_quantity_placeholder">Ex. 4</string>
+    <string name="edit_list_item_category_hint">Category</string>
+    <string name="edit_list_item_category_placeholder">Ex. Fruits &amp; Vegetables</string>
+    <string name="edit_list_item_notes_hint">Additional Details</string>
+    <string name="edit_list_item_notes_placeholder">Ex. Only red delicous</string>
 
     <string name="new_list_action_save">Save</string>
     <string name="new_list_name_label">List Name</string>

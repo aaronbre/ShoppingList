@@ -52,12 +52,13 @@ public class ListItem implements Parcelable {
 
     // A full constructer to use when creating the item - will not be used by Room
     @Ignore
-    public ListItem(@NonNull int id, String itemName, int quantity, String notes, String listName) {
+    public ListItem(@NonNull int id, String itemName, int quantity, String notes, String listName, String category) {
         this.id = id;
         this.itemName = itemName;
         this.quantity = quantity;
         this.notes = notes;
         this.listName = listName;
+        this.category = category;
     }
 
     //empty constructer to be used by room
