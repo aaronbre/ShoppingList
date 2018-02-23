@@ -111,6 +111,7 @@ public class ListDetailActivity extends AppCompatActivity {
         int itemId = item.getItemId();
         if (itemId == R.id.list_details_action_delete_list){
             mViewModel.deleteList();
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);

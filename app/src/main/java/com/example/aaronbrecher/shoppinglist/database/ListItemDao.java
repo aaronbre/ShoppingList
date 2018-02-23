@@ -3,6 +3,7 @@ package com.example.aaronbrecher.shoppinglist.database;
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
 import com.example.aaronbrecher.shoppinglist.model.ListItem;
@@ -23,7 +24,7 @@ public interface ListItemDao {
     void insertAll(List<ListItem> items);
 
     //Insert a few or single ListItem into the database
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(ListItem... items);
 
     //query function for retrieving a single List item

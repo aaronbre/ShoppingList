@@ -57,14 +57,14 @@ public class NewListActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.add_new_list_menu, menu);
+        inflater.inflate(R.menu.menu_with_save, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.new_list_action_save){
+        if(id == R.id.list_action_save){
             //TODO check that the name is unique
             ShoppingList list = createListFromUserInput();
             long listId = mViewModel.saveListToRoom(list);
