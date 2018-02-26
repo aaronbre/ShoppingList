@@ -2,6 +2,8 @@ package com.example.aaronbrecher.shoppinglist.dependencyinjection;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.example.aaronbrecher.shoppinglist.ShoppingListApplication;
 
@@ -32,4 +34,11 @@ public class AppModule {
     @Provides
     @Singleton
     Application providesApp(){return application;}
+
+    @Provides
+    @Singleton
+    SharedPreferences providesSharedPreferences(Application application) {
+        return PreferenceManager.getDefaultSharedPreferences(application);
+    }
+
 }

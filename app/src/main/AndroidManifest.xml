@@ -21,7 +21,9 @@
             android:name=".activities.NewListActivity"
             android:label="New Shopping List"
             android:parentActivityName=".activities.ListActivity" />
-        <activity android:name=".activities.ListDetailActivity" />
+        <activity android:name=".activities.ListDetailActivity"
+            android:parentActivityName=".activities.ListActivity"
+            android:launchMode="singleTop"/>
         <activity android:name=".activities.EditListItemActivity"
             android:parentActivityName=".activities.ListDetailActivity"></activity>
     </application>

@@ -2,13 +2,17 @@ package com.example.aaronbrecher.shoppinglist.activities;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aaronbrecher.shoppinglist.R;
@@ -27,11 +31,19 @@ public class EditListItemActivity extends AppCompatActivity {
     private static final String TAG = EditListItemActivity.class.getSimpleName();
     @BindView(R.id.edit_list_item_name) EditText mEditListItemName;
     @BindView(R.id.edit_list_item_category) EditText mEditListItemCategory;
-    @BindView(R.id.edit_list_item_quantity) EditText mEditListItemQuantity;
+    @BindView(R.id.edit_list_item_quantity) TextView mEditListItemQuantity;
     @BindView(R.id.edit_list_item_notes) EditText mEditListItemNotes;
+    @BindView(R.id.edit_list_item_quantity_decrement) Button mDecrementButton;
+    @BindView(R.id.edit_list_item_quantity_increment) Button mIncrementButton;
+
     @Inject
     CustomViewModelFactory mCustomViewModelFactory;
+
+    @Inject
+    SharedPreferences mSharedPreferences;
+
     private EditListItemViewModel mViewModel;
+    private int mQuantityCount= 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +77,15 @@ public class EditListItemActivity extends AppCompatActivity {
             mEditListItemName.setText(item.getItemName());
             mEditListItemCategory.setText(item.getCategory());
             mEditListItemQuantity.setText(String.valueOf(item.getQuantity()));
+            mQuantityCount = item.getQuantity();
             mEditListItemNotes.setText(item.getNotes());
         } else {
             setTitle(R.string.new_list_item_title);
             mViewModel.setListName(getIntent().getStringExtra(getString(R.string.edit_list_item_list_name_key)));
         }
+
+        mIncrementButton.setOnClickListener(quantityChangeListener);
+        mDecrementButton.setOnClickListener(quantityChangeListener);
     }
 
     @Override
@@ -94,7 +110,6 @@ public class EditListItemActivity extends AppCompatActivity {
 
     private ListItem setupListItem(){
         ListItem listItem = new ListItem();
-        Log.d(TAG, "setupListItem: quantity is " + mEditListItemQuantity.getText());
         listItem.setItemName(mEditListItemName.getText().toString());
         listItem.setCategory(mEditListItemCategory.getText().toString());
         listItem.setNotes(mEditListItemNotes.getText().toString());
@@ -102,6 +117,27 @@ public class EditListItemActivity extends AppCompatActivity {
         listItem.setQuantity(quantity);
         return listItem;
     }
+
+    /**
+     * Listener for the quantity change buttons
+     * TODO Implement
+     */
+    View.OnClickListener quantityChangeListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String operator = ((Button) view).getText().toString().trim();
+            if (operator.equals("+")){
+                mQuantityCount++;
+                updateQuantity();
+            }
+            else if(operator.equals("-")){
+                mQuantityCount--;
+                updateQuantity();
+            }
+        }
+    };
+
+    private void updateQuantity(){
+        mEditListItemQuantity.setText(String.format("%d", mQuantityCount));
+    }
 }
-
-

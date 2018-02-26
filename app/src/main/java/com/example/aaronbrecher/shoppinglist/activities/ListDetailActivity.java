@@ -79,8 +79,6 @@ public class ListDetailActivity extends AppCompatActivity {
             public void onChanged(@Nullable List<ListItem> items) {
                 if(mListItems == null){
                     mListItems = items;
-                    //TODO remove this
-                    for(ListItem item : mListItems) Log.i(TAG, "onChanged: Current listItem " + item.toString());
                     mAdapter = new ListDetailAdapter(items);
                     mListDetailItemList.setAdapter(mAdapter);
                 }else {

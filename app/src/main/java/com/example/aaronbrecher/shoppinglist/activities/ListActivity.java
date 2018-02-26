@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -40,6 +41,9 @@ public class ListActivity extends AppCompatActivity implements ShoppingListAdapt
     //use dagger to get the ViewModelFactory will setup automatically
     @Inject
     ViewModelProvider.Factory mViewModelFactory;
+
+    @Inject
+    SharedPreferences mSharedPreferences;
 
     ListViewModel mViewModel;
     List<ShoppingList> mShoppingLists;
