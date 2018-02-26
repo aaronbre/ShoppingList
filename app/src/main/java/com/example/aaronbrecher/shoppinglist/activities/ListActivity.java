@@ -23,7 +23,10 @@ import com.example.aaronbrecher.shoppinglist.adapters.ShoppingListAdapter;
 import com.example.aaronbrecher.shoppinglist.model.ShoppingList;
 import com.example.aaronbrecher.shoppinglist.viewmodel.ListViewModel;
 
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
 
@@ -62,6 +65,11 @@ public class ListActivity extends AppCompatActivity implements ShoppingListAdapt
                 .getAppComponent()
                 .inject(this);
 
+        //do initial app setup on first run...
+        if(mSharedPreferences.getBoolean("firstrun", true)){
+            firstTimeSetup();
+            mSharedPreferences.edit().putBoolean("firstrun", false).apply();
+        }
         //set up the view model for the activity
         mViewModel = ViewModelProviders.of(this, mViewModelFactory)
                 .get(ListViewModel.class);
@@ -135,5 +143,20 @@ public class ListActivity extends AppCompatActivity implements ShoppingListAdapt
         Intent intent = new Intent(this, ListDetailActivity.class);
         intent.putExtra("listName", name);
         startActivity(intent);
+    }
+
+    /**
+     * A function to be called on the first load of the app. It initializes the shared preferences
+     * with a set of categories to be used in the editItem spinner for categories
+     */
+    private void firstTimeSetup(){
+        if (mSharedPreferences.getBoolean("firstLogin", true)){
+            Set<String> categories = new HashSet<String>();
+            String [] c = getResources().getStringArray(R.array.item_categories);
+            Collections.addAll(categories, c);
+            SharedPreferences.Editor editor = mSharedPreferences.edit();
+            editor.putStringSet(getString(R.string.shared_preferences_category_key), categories);
+            editor.apply();
+        }
     }
 }

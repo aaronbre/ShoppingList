@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="item_categories">
+        <item>@string/category_bakery</item>
+        <item>@string/category_baking_goods</item>
+        <item>@string/category_beverages</item>
+        <item>@string/category_canned</item>
+        <item>@string/category_dairy</item>
+        <item>@string/category_frozen_foods</item>
+        <item>@string/category_fruits_and_vegetables</item>
+        <item>@string/category_meat</item>
+        <item>@string/category_paper_goods</item>
+        <item>@string/category_personal_care</item>
+    </string-array>
+</resources>

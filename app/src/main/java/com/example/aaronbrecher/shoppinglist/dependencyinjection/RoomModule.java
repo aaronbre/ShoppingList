@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.persistence.room.Room;
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.example.aaronbrecher.shoppinglist.database.ListItemDao;
 import com.example.aaronbrecher.shoppinglist.database.ListItemRepository;
@@ -68,7 +69,7 @@ public class RoomModule {
 
     @Provides
     @Singleton
-    ViewModelProvider.Factory provideViewModelFactory(ListItemRepository listItemRepository, ShoppingListRepository shoppingListRepository){
-        return new CustomViewModelFactory(listItemRepository, shoppingListRepository);
+    ViewModelProvider.Factory provideViewModelFactory(ListItemRepository listItemRepository, ShoppingListRepository shoppingListRepository, SharedPreferences sharedPreferences){
+        return new CustomViewModelFactory(listItemRepository, shoppingListRepository, sharedPreferences);
     }
 }

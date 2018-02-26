@@ -2,6 +2,7 @@ package com.example.aaronbrecher.shoppinglist.viewmodel;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 
 import com.example.aaronbrecher.shoppinglist.activities.EditListItemActivity;
@@ -22,11 +23,13 @@ import javax.inject.Singleton;
 public class CustomViewModelFactory implements ViewModelProvider.Factory {
     private final ListItemRepository listItemRepository;
     private final ShoppingListRepository shoppingListRepository;
-
+    private final SharedPreferences sharedPreferences;
     @Inject
-    public CustomViewModelFactory(ListItemRepository listItemRepository, ShoppingListRepository shoppingListRepository) {
+    public CustomViewModelFactory(ListItemRepository listItemRepository,
+                                  ShoppingListRepository shoppingListRepository, SharedPreferences sharedPreferences) {
         this.shoppingListRepository = shoppingListRepository;
         this.listItemRepository = listItemRepository;
+        this.sharedPreferences = sharedPreferences;
     }
 
     @NonNull
@@ -39,7 +42,7 @@ public class CustomViewModelFactory implements ViewModelProvider.Factory {
         } else if(modelClass.isAssignableFrom(ListDetailViewModel.class)){
             return (T) new ListDetailViewModel(shoppingListRepository, listItemRepository);
         } else if (modelClass.isAssignableFrom(EditListItemViewModel.class)){
-            return (T) new EditListItemViewModel(listItemRepository);
+            return (T) new EditListItemViewModel(listItemRepository, sharedPreferences);
         }
         else {
             throw new IllegalArgumentException("ViewModel not found");
