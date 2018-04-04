@@ -9,7 +9,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -31,7 +30,6 @@ import butterknife.ButterKnife;
 
 public class ListDetailActivity extends AppCompatActivity {
 
-    private static final String TAG = ListDetailActivity.class.getSimpleName() ;
     @Inject
     CustomViewModelFactory mCustomViewModelFactory;
 
@@ -68,7 +66,7 @@ public class ListDetailActivity extends AppCompatActivity {
         //set up the recycler view NOTE: the onClick of the recyclerView is taken care of by the adapter!
         mListDetailItemList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        /**set up the observable for the LiveData in the view model, the list
+        /*set up the observable for the LiveData in the view model, the list
          * we are watching will be used to set up the recyclerView and will update
          * on changes
          */

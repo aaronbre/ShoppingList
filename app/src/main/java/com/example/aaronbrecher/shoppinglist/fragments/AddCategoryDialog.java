@@ -25,7 +25,7 @@ public class AddCategoryDialog extends DialogFragment {
      */
 
     public interface NoticeDialogListener {
-        public void onDialogPositiveClick(DialogFragment dialog);
+         void onDialogPositiveClick(DialogFragment dialog);
     }
 
     NoticeDialogListener mListener;
@@ -68,6 +68,8 @@ public class AddCategoryDialog extends DialogFragment {
 
         try {
             // Instantiate the NoticeDialogListener so we can send events to the host
+
+
             mListener = (NoticeDialogListener) context;
         } catch (ClassCastException e) {
             // The activity doesn't implement the interface, throw exception

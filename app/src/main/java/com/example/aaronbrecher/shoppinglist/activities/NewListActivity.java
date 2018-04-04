@@ -67,6 +67,7 @@ public class NewListActivity extends AppCompatActivity {
         if(id == R.id.list_action_save){
             //TODO check that the name is unique
             ShoppingList list = createListFromUserInput();
+            if(list == null) return super.onOptionsItemSelected(item);
             long listId = mViewModel.saveListToRoom(list);
             if(listId == -1){
                 Toast.makeText(this, getString(R.string.insert_list_failed_toast), Toast.LENGTH_SHORT).show();

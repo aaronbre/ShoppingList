@@ -161,8 +161,7 @@ public class EditListItemActivity extends AppCompatActivity implements AdapterVi
      */
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-        String itemSelected = (String) adapterView.getItemAtPosition(position);
-        mCategory = itemSelected;
+        mCategory = (String) adapterView.getItemAtPosition(position);
 
 
     }

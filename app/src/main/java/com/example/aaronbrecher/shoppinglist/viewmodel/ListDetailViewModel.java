@@ -11,9 +11,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-/**
- * Created by aaronbrecher on 2/21/18.
- */
 
 public class ListDetailViewModel extends ViewModel {
 
